@@ -34,20 +34,5 @@ class PuppyPage():
         puppy = PuppyPage.getPuppyLoc(self, dog)
         self.driver.find_element(by=By.XPATH, value=puppy).click()
         self.driver.find_element(by=By.XPATH, value=OverwievPage.xp_confirm).click()
-        if collar == True:
-            t = self.driver.find_elements(by=By.ID, value=CommodityPage.id_collar)
-            for x in t:
-                x.click()
-        if chew == True:
-            t = self.driver.find_elements(by=By.ID, value=CommodityPage.id_toy)
-            for x in t:
-                x.click()
-        if carrier == True:
-            t = self.driver.find_elements(by=By.ID, value=CommodityPage.id_carrier)
-            for x in t:
-                x.click()
-        if vet == True:
-            t = self.driver.find_elements(by=By.ID, value=CommodityPage.id_vet)
-            for x in t:
-                x.click()
+        CommodityPage.selectCommodities(self,collar,chew,carrier,vet)
         self.assertTrue(dog in self.driver.page_source, True)
