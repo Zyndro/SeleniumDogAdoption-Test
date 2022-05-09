@@ -14,3 +14,6 @@ Start by running runner.py
 python runner.py
 ```
 
+Test report is generated as a .txt file in the root directory.
+
+
