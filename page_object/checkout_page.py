@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
+
 class CheckoutPage():
     id_name = "order_name"
     id_adress = "order_address"
@@ -10,9 +11,10 @@ class CheckoutPage():
 
     def fillData(self):
         self.driver.find_element(by=By.ID, value=CheckoutPage.id_name).send_keys('Test Test')
-        self.driver.find_element(by=By.ID, value=CheckoutPage.id_adress).send_keys('2137 California Ave, Saginaw, MI 48601')
+        self.driver.find_element(by=By.ID, value=CheckoutPage.id_adress).send_keys(
+            '2137 California Ave, Saginaw, MI 48601')
         self.driver.find_element(by=By.ID, value=CheckoutPage.id_email).send_keys('test@test.com')
 
-    def paymentMethod(self ,method):
+    def paymentMethod(self, method):
         select = Select(self.driver.find_element(by=By.ID, value=CheckoutPage.id_payment))
         select.select_by_visible_text(str(method))

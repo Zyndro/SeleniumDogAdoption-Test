@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 
+
 class CommodityPage():
     id_collar = "collar"
     id_toy = "toy"
@@ -9,7 +10,7 @@ class CommodityPage():
     xp_addAnother = "/html/body/div[1]/div[1]/div[3]/div[2]/form[2]/input"
     xp_resign = "/html/body/div[1]/div[1]/div[3]/div[2]/form[3]/input[2]"
 
-    def selectCommodities(self,collar=False,chew=False,carrier=False,vet=False):
+    def selectCommodities(self, collar=False, chew=False, carrier=False, vet=False):
         if collar == True:
             t = self.driver.find_elements(by=By.ID, value=CommodityPage.id_collar)
             for x in t:

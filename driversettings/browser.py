@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
 from page_object.home_page import PuppyPage
+
 
 class browser():
     def browserSettings(self):

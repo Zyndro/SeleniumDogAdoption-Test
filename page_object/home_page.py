@@ -1,7 +1,10 @@
-from selenium.webdriver.common.by import By
-from page_object.overwiev_page import OverwievPage
-from page_object.commodities_page import CommodityPage
 import random
+
+from selenium.webdriver.common.by import By
+
+from page_object.commodities_page import CommodityPage
+from page_object.overwiev_page import OverwievPage
+
 
 class PuppyPage():
     dognamelist = ["Brook", "Hanna", "Maggie Mae", "Ruby Sue", "Tipsy", "Spud", "Twinkie"]
@@ -34,5 +37,5 @@ class PuppyPage():
         puppy = PuppyPage.getPuppyLoc(self, dog)
         self.driver.find_element(by=By.XPATH, value=puppy).click()
         self.driver.find_element(by=By.XPATH, value=OverwievPage.xp_confirm).click()
-        CommodityPage.selectCommodities(self,collar,chew,carrier,vet)
+        CommodityPage.selectCommodities(self, collar, chew, carrier, vet)
         self.assertTrue(dog in self.driver.page_source, True)
