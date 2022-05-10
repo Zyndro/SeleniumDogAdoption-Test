@@ -15,16 +15,12 @@ class Adoption(unittest.TestCase):
         browser.browserSettings(self)
 
     def test_adoptBrook(self):
-        puppy = PuppyPage.getPuppyLoc(self, "Brook")
-        self.driver.find_element(by=By.XPATH, value=puppy).click()
-        self.driver.find_element(by=By.XPATH, value=OverwievPage.xp_confirm).click()
-        self.driver.find_element(by=By.ID, value=CommodityPage.id_toy).click()
-        self.driver.find_element(by=By.ID, value=CommodityPage.id_carrier).click()
+        PuppyPage.adddog(self, dogname="Brook", chew=True,carrier=True)
         self.assertTrue(("Brook") in self.driver.page_source, True)
-        self.driver.find_element(by=By.XPATH, value=CommodityPage.xp_complete).click()
+        CommodityPage.clickComplete(self)
         CheckoutPage.fillData(self)
         CheckoutPage.paymentMethod(self, "Check")
-        self.driver.find_element(by=By.XPATH, value=CheckoutPage.xp_confirm).click()
+        CheckoutPage.clickConfirm(self)
         self.assertTrue(("Thank you for adopting a puppy!") in self.driver.page_source, True)
 
     @classmethod

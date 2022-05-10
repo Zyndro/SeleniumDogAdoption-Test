@@ -15,12 +15,12 @@ class Adoption(unittest.TestCase):
 
     def test_adoptTwoRandom(self):
         PuppyPage.adddog(self, collar=True)
-        self.driver.find_element(by=By.XPATH, value=CommodityPage.xp_addAnother).click()
+        CommodityPage.clickAnother(self)
         PuppyPage.adddog(self, collar=True)
-        self.driver.find_element(by=By.XPATH, value=CommodityPage.xp_complete).click()
+        CommodityPage.clickComplete(self)
         CheckoutPage.fillData(self)
         CheckoutPage.paymentMethod(self, "Credit card")
-        self.driver.find_element(by=By.XPATH, value=CheckoutPage.xp_confirm).click()
+        CheckoutPage.clickConfirm(self)
         self.assertTrue(("Thank you for adopting a puppy!") in self.driver.page_source, True)
 
     @classmethod
