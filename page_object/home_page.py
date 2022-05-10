@@ -31,11 +31,16 @@ class PuppyPage():
         # infinite recursion possible, dont care for now
         return PuppyPage.getPuppyLoc(self, dogname)
 
-    def adddog(self, collar=False, chew=False, carrier=False, vet=False):
-        dog = random.choice(PuppyPage.dognamelist)
-        PuppyPage.dognamelist.remove(dog)
+    def adddog(self,dogname=None , collar=False, chew=False, carrier=False, vet=False):
+        if dogname == None:
+            dog = random.choice(PuppyPage.dognamelist)
+            PuppyPage.dognamelist.remove(dog)
+        else:
+            dog = dogname
         puppy = PuppyPage.getPuppyLoc(self, dog)
         self.driver.find_element(by=By.XPATH, value=puppy).click()
         self.driver.find_element(by=By.XPATH, value=OverwievPage.xp_confirm).click()
         CommodityPage.selectCommodities(self, collar, chew, carrier, vet)
         self.assertTrue(dog in self.driver.page_source, True)
+
+

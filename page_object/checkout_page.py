@@ -18,3 +18,6 @@ class CheckoutPage():
     def paymentMethod(self, method):
         select = Select(self.driver.find_element(by=By.ID, value=CheckoutPage.id_payment))
         select.select_by_visible_text(str(method))
+
+    def clickConfirm(self):
+        self.driver.find_element(by=By.XPATH, value=CheckoutPage.xp_confirm).click()

@@ -10,6 +10,13 @@ class CommodityPage():
     xp_addAnother = "/html/body/div[1]/div[1]/div[3]/div[2]/form[2]/input"
     xp_resign = "/html/body/div[1]/div[1]/div[3]/div[2]/form[3]/input[2]"
 
+
+    def clickComplete(self):
+        self.driver.find_element(by=By.XPATH, value=CommodityPage.xp_complete).click()
+
+    def clickAnother(self):
+        self.driver.find_element(by=By.XPATH, value=CommodityPage.xp_addAnother).click()
+
     def selectCommodities(self, collar=False, chew=False, carrier=False, vet=False):
         if collar == True:
             t = self.driver.find_elements(by=By.ID, value=CommodityPage.id_collar)
