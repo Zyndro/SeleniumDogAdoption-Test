@@ -1,12 +1,9 @@
 import unittest
 
-from selenium.webdriver.common.by import By
-
 from DriverSettings.browser import browser
 from page_object.checkout_page import CheckoutPage
 from page_object.commodities_page import CommodityPage
 from page_object.home_page import PuppyPage
-from page_object.overwiev_page import OverwievPage
 
 
 class Adoption(unittest.TestCase):

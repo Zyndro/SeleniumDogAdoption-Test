@@ -1,12 +1,9 @@
 import unittest
 
-from selenium.webdriver.common.by import By
-
 from DriverSettings.browser import browser
 from page_object.checkout_page import CheckoutPage
 from page_object.commodities_page import CommodityPage
 from page_object.home_page import PuppyPage
-from page_object.overwiev_page import OverwievPage
 
 
 class Adoption(unittest.TestCase):
@@ -15,7 +12,7 @@ class Adoption(unittest.TestCase):
         browser.browserSettings(self)
 
     def test_adoptBrook(self):
-        PuppyPage.adddog(self, dogname="Brook", chew=True,carrier=True)
+        PuppyPage.adddog(self, dogname="Brook", chew=True, carrier=True)
         self.assertTrue(("Brook") in self.driver.page_source, True)
         CommodityPage.clickComplete(self)
         CheckoutPage.fillData(self)
