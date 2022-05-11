@@ -1,11 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-from page_object.home_page import PuppyHomePage
 
 
-class browser():
-    def browserSettings(self):
+class BrowserSetup():
+    def browserStartup(self):
         #self.deca = DesiredCapabilities().FIREFOX
         self.deca = DesiredCapabilities().CHROME
         self.deca["pageLoadStrategy"] = "normal"
@@ -13,4 +12,4 @@ class browser():
         self.driver = webdriver.Chrome(executable_path=r'./Drivers/chromedriver.exe', desired_capabilities=self.deca)
         self.driver.implicitly_wait(5)
         self.driver.maximize_window()
-        PuppyHomePage.openPage(self)
+
