@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-from page_object.home_page import PuppyPage
+from page_object.home_page import PuppyHomePage
 
 
 class browser():
@@ -13,4 +13,4 @@ class browser():
         #self.driver = webdriver.Chrome(executable_path=r'./Drivers/chromedriver.exe', desired_capabilities=self.deca)
         self.driver.implicitly_wait(5)
         self.driver.maximize_window()
-        PuppyPage.openPage(self)
+        PuppyHomePage.openPage(self)
