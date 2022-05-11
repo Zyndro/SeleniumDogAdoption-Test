@@ -5,11 +5,18 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class BrowserSetup():
     def browserStartup(self):
-        #self.deca = DesiredCapabilities().FIREFOX
-        self.deca = DesiredCapabilities().CHROME
-        self.deca["pageLoadStrategy"] = "normal"
-        #self.driver = webdriver.Firefox(executable_path=r'./Drivers/geckodriver.exe',desired_capabilities=self.deca)
-        self.driver = webdriver.Chrome(executable_path=r'./Drivers/chromedriver.exe', desired_capabilities=self.deca)
+        BrowserSetup.loadBrowser(self, "Chrome")
+
+    def loadBrowser(self, browser):
+        if browser == "Chrome":
+            self.deca = DesiredCapabilities().CHROME
+            self.deca["pageLoadStrategy"] = "normal"
+            self.driver = webdriver.Chrome(executable_path=r'./Drivers/chromedriver.exe', desired_capabilities=self.deca)
+        if browser == "Firefox":
+            self.deca = DesiredCapabilities().FIREFOX
+            self.deca["pageLoadStrategy"] = "normal"
+            self.driver = webdriver.Firefox(executable_path=r'./Drivers/geckodriver.exe',desired_capabilities=self.deca)
         self.driver.implicitly_wait(5)
         self.driver.maximize_window()
+
 
