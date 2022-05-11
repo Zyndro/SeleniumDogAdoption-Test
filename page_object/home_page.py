@@ -17,7 +17,8 @@ class PuppyHomePage():
     def openPage(self):
         self.driver.get("https://spartantest-puppies.herokuapp.com/agency?page=1")
 
-    def getPuppyLoc(self, name):
+    # Find specific puppy on adoption list, if name not specified then random one is selected
+    def findPuppyOnList(self, name):
         dogname = str(name)
         for x in PuppyHomePage.puppiesonpage:
             puppy = self.driver.find_element(by=By.XPATH, value=x).text
@@ -29,7 +30,7 @@ class PuppyHomePage():
 
         self.driver.find_element(by=By.XPATH, value=PuppyHomePage.txt_next_page).click()
         # infinite recursion possible, dont care for now
-        return PuppyHomePage.getPuppyLoc(self, dogname)
+        return PuppyHomePage.findPuppyOnList(self, dogname)
 
     def addDogToOrder(self,dogname=None , collar=False, chew=False, carrier=False, vet=False):
         if dogname == None:
@@ -37,7 +38,7 @@ class PuppyHomePage():
             PuppyHomePage.dognamelist.remove(dog)
         else:
             dog = dogname
-        puppy = PuppyHomePage.getPuppyLoc(self, dog)
+        puppy = PuppyHomePage.findPuppyOnList(self, dog)
         self.driver.find_element(by=By.XPATH, value=puppy).click()
         self.driver.find_element(by=By.XPATH, value=OverwievPage.xp_confirm).click()
         CommodityPage.selectCommodities(self, collar, chew, carrier, vet)
