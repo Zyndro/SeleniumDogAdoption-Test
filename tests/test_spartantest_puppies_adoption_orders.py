@@ -1,7 +1,7 @@
 import random
 import unittest
 
-from DriverSettings.browsersetup import BrowserSetup
+from DriverSettings.browser_setup import BrowserSetup
 from page_object.checkout_page import CheckoutPage
 from page_object.commodities_page import CommodityPage
 from page_object.home_page import HomePage
