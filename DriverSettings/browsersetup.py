@@ -4,10 +4,10 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
 class BrowserSetup():
-    def browserStartup(self):
-        BrowserSetup.loadBrowser(self, "Chrome")
+    def browser_startup(self):
+        BrowserSetup.load_browser(self, "Chrome")
 
-    def loadBrowser(self, browser):
+    def load_browser(self, browser):
         if browser == "Chrome":
             self.deca = DesiredCapabilities().CHROME
             self.deca["pageLoadStrategy"] = "normal"

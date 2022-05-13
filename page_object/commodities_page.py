@@ -11,16 +11,16 @@ class CommodityPage():
     xp_resign = "/html/body/div[1]/div[1]/div[3]/div[2]/form[3]/input[2]"
     temp = []
 
-    def clickComplete(self):
+    def click_complete(self):
         self.driver.find_element(by=By.XPATH, value=CommodityPage.xp_complete).click()
 
-    def clickAnother(self):
+    def click_another(self):
         self.driver.find_element(by=By.XPATH, value=CommodityPage.xp_addAnother).click()
 
-    def assignAccesoriesToDog(self, collar, chew, carrier, vet, Dognumber):
+    def assign_accesories_to_dog(self, collar, chew, carrier, vet, Dognumber):
         CommodityPage.temp.append([collar, chew, carrier, vet, Dognumber])
 
-    def selectCommodities(self, collar=False, chew=False, carrier=False, vet=False, Dognumber=0):
+    def select_commodities(self, collar=False, chew=False, carrier=False, vet=False, Dognumber=0):
         if collar == True:
             t = self.driver.find_elements(by=By.ID, value=CommodityPage.id_collar)
             t[Dognumber].click()
@@ -34,12 +34,12 @@ class CommodityPage():
             t = self.driver.find_elements(by=By.ID, value=CommodityPage.id_vet)
             t[Dognumber].click()
 
-    def finalizeOrder(self):
+    def finalize_order(self):
         for x in CommodityPage.temp:
             collar = x[0]
             chew = x[1]
             carrier = x[2]
             vet = x[3]
             Dognumber = x[4]
-            CommodityPage.selectCommodities(self, collar, chew, carrier, vet, Dognumber)
+            CommodityPage.select_commodities(self, collar, chew, carrier, vet, Dognumber)
         CommodityPage.temp = []
