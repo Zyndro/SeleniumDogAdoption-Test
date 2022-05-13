@@ -16,7 +16,7 @@ For quick modules install use:
 pip3 install -r requirements.txt
 ```
 
-Select your browser in /DriverSettings/browser.py (Chrome is by default)
+Select your browser in /DriverSettings/browser_setup.py (See the comment inside, Chrome is by default)
 
 Because of how heroku works, you may need to visit the site before you launch the test to "wake it up".
 
