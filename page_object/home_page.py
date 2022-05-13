@@ -7,12 +7,18 @@ from page_object.overwiev_page import OverwievPage
 
 
 class PuppyHomePage():
+
+    id_purchaseNotice = "notice"
     dognamelist = ["Brook", "Hanna", "Maggie Mae", "Ruby Sue", "Tipsy", "Spud", "Twinkie"]
     puppiesonpage = ["/html/body/div[1]/div[1]/div[3]/div[2]/div/div[2]/h3",
                      "/html/body/div[1]/div[1]/div[3]/div[3]/div/div[2]/h3",
                      "/html/body/div[1]/div[1]/div[3]/div[4]/div/div[2]/h3",
                      "/html/body/div[1]/div[1]/div[3]/div[5]/div/div[2]/h3"]
     txt_next_page = "//*[text()='Next →']"
+
+    def purchaseSuccessCheck(self):
+        if self.driver.find_element(by=By.ID, value=PuppyHomePage.id_purchaseNotice).text == "Thank you for adopting a puppy!":
+            return True
 
     def openPage(self):
         self.driver.get("https://spartantest-puppies.herokuapp.com/agency?page=1")
@@ -32,7 +38,8 @@ class PuppyHomePage():
         # infinite recursion possible, dont care for now
         return PuppyHomePage.findPuppyOnList(self, dogname)
 
-    def addDogToOrder(self,dogname=None , collar=False, chew=False, carrier=False, vet=False):
+    # Dognumber starts at zero
+    def addDogToOrder(self,dogname=None, collar=False, chew=False, carrier=False, vet=False ,DogNumber=0):
         if dogname == None:
             dog = random.choice(PuppyHomePage.dognamelist)
             PuppyHomePage.dognamelist.remove(dog)
@@ -40,8 +47,8 @@ class PuppyHomePage():
             dog = dogname
         puppy = PuppyHomePage.findPuppyOnList(self, dog)
         self.driver.find_element(by=By.XPATH, value=puppy).click()
-        self.driver.find_element(by=By.XPATH, value=OverwievPage.xp_confirm).click()
-        CommodityPage.selectCommodities(self, collar, chew, carrier, vet)
+        OverwievPage.clickConfirm(self)
         self.assertTrue(dog in self.driver.page_source, True)
+        CommodityPage.assignAccesoriesToDog(self, collar, chew, carrier, vet, DogNumber)
 
 
